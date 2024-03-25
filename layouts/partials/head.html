@@ -1,30 +1,33 @@
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Body of the Year Bakery</title>
   <!-- TODO: Get an SEO plugin or add it yourself -->
 
   <!-- The bookshop_scss partial returns a slice of all SCSS resources from your Bookshop -->
-  {{ $bookshop_scss_files := partial "bookshop_scss" . }}
-  {{ $scss := $bookshop_scss_files | resources.Concat "css/bookshop.css" | resources.ToCSS | resources.Minify |
-  resources.Fingerprint }}
-  <link rel="stylesheet" href="{{ $scss.Permalink }}">
-  
+  {{ $bookshop_scss_files := partial "bookshop_scss" . }} {{ $scss :=
+  $bookshop_scss_files | resources.Concat "css/bookshop.css" | resources.ToCSS |
+  resources.Minify | resources.Fingerprint }}
+  <link rel="stylesheet" href="{{ $scss.Permalink }}" />
+
   <!-- Process scss to css -->
-  {{ $sass := resources.Get "scss/main.scss" }}
-  {{ $style := $sass | resources.ToCSS | resources.Minify | resources.Fingerprint}}
-  <link rel="stylesheet" href="{{ $style.Permalink }}">
+  {{ $sass := resources.Get "scss/main.scss" }} {{ $style := $sass |
+  resources.ToCSS | resources.Minify | resources.Fingerprint}}
+  <link rel="stylesheet" href="{{ $style.Permalink }}" />
 
   <!-- Add tailwind styles -->
-  {{ $styles := resources.Get "css/main.css" }} 
-  {{ $styles = $styles | resources.PostCSS (dict "inlineImports" true) }} 
-  {{ if hugo.IsProduction }} 
-  {{$styles = $styles | minify }} 
-  {{ else }} 
-  {{ $styles = $styles | resources.ExecuteAsTemplate (printf "tailwind.dev.%v.css" now.UnixMilli) . }}
+  {{ $styles := resources.Get "css/main.css" }} {{ $styles = $styles |
+  resources.PostCSS (dict "inlineImports" true) }} {{ if hugo.IsProduction }}
+  {{$styles = $styles | minify }} {{ else }} {{ $styles = $styles |
+  resources.ExecuteAsTemplate (printf "tailwind.dev.%v.css" now.UnixMilli) . }}
   {{ end }}
   <link href="{{ $styles.Permalink }} " rel="stylesheet" />
+
+  <!-- Add FA Kit -->
+  <script
+    src="https://kit.fontawesome.com/18459b0ca5.js"
+    crossorigin="anonymous"></script>
 
   <!-- Run JavaScript async -->
   {{ $js := resources.Get "js/index.js" | js.Build }}
