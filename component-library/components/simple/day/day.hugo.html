@@ -1,8 +1,10 @@
-<div class="c-day">
-    <h4>{{ .day }}</h4>
-    <ul>
-        {{ range .loaves }}
-            <li>{{ . }}</li>  
-        {{ end }}
-    </ul>
+{{ $c := "c-day" }}
+
+<div class="{{ $c }}">
+  <h3>{{ .day }}</h3>
+  <ul class="{{ $c }}__list">
+    {{ range .loaves }}
+      <li>{{ . }}</li>  
+    {{ end }}
+  </ul>
 </div>

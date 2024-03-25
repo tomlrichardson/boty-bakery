@@ -19,4 +19,17 @@ _inputs:
   loaves:
     type: multiselect
     options:
-      values: data.loaves
+      values: collections.loaves
+      value_key: name
+  day:
+    type: select
+    options:
+      values:
+        - Monday
+        - Tuesday
+        - Wednesday
+        - Thursday
+        - Friday
+        - Saturday
+        - Sunday
+        - All Week

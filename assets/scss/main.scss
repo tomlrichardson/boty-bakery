@@ -1,3 +1,8 @@
+// Imports
+@import "variables.scss";
+@import "header.scss";
+@import "hamburger.scss";
+
 // Reset
 *, 
 *::before, 
@@ -10,11 +15,6 @@
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
-
-// Imports
-@import "variables.scss";
-@import "header.scss";
-@import "hamburger.scss";
 
 body {
   -webkit-overflow-scrolling: touch;
@@ -34,4 +34,8 @@ body {
   margin: 0 auto;
   display: grid;
   grid-template-columns: $twelve-column-grid;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: 0.05ch;
 }

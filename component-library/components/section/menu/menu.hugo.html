@@ -4,7 +4,6 @@
     <div class="{{ $c }}__container">
         <h2>{{ .heading }}</h2>
         <p>{{ .text }}</p>
-        <!-- TODO: Turn into a carousel -->
         {{ range .days }}
             {{ partial "bookshop" (slice "simple/day" . )}}
         {{ end }}

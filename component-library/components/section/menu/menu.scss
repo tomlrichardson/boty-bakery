@@ -1,9 +1,19 @@
 .c-menu {
   display: grid;
   grid-template-columns: $twelve-column-grid;
+  padding-top: 96px;
 
   &__container {
     max-width: $container-lg;
     grid-column: 2 / -2;
+  }
+
+  h2 {
+    font-size: 3rem;
+    font-weight: 600;
+  }
+
+  p {
+    margin-bottom: 3rem;
   }
 }
