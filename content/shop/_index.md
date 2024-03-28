@@ -2,9 +2,6 @@
 title: Shop
 linkTitle: Shop
 description: Shop for home
-menu:
-  main:
-    weight: 3
 content_blocks:
   - _bookshop_name: section/hero
     title: Body of the Year Bakery

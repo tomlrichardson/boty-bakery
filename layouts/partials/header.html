@@ -19,23 +19,11 @@
       </a>
       {{ partial "hamburger.html" . }}
       <ul class="{{ $c }}__nav-links" x-show="open" x-transition @click.outside="open = false">
-        {{ range .Site.Menus.main -}}
+        {{ range .Site.Data.nav.links -}}
           <li class="{{ $c }}__nav-item" >
-            {{ $active := or ($p.IsMenuCurrent "main" .) ($p.HasMenuCurrent "main" .) -}}
-            {{ with .Page }}{{ $active = or $active ( $.IsDescendant .) }}{{ end -}}
-            {{ $url := urls.Parse .URL -}}
-            {{ $baseurl := urls.Parse $.Site.Params.baseURL -}}
-            <a
-              class="{{- if $active }} active {{- end }}"
-              href="{{ with .Page }}{{ .RelPermalink }}{{ else }}{{ .URL | relLangURL }}{{ end }}"
-              {{- if ne $url.Host $baseurl.Host }} target="_blank" {{- end -}}
-            >
-              <span {{- if $active }} class="active" {{- end }}>
-                {{- .Name -}}
-              </span>
-            </a>
+            <a href="{{ .link }}">{{ .text }}</a>
           </li>
-        {{ end -}}
+        {{ end }}
       </ul>
     </nav>
   </div>
